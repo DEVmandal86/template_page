@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creative Templates</title>
+
+<!-- GOOGLE FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* =======================
+   GLOBAL
+======================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(180deg, #2b2b7d, #0b0b2a);
+  color: #0a0a0a;
+  overflow-x: hidden;
+}
+
+section {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1400px;
+  padding: 120px 6vw;
+}
+
+/* =======================
+   NAVBAR
+======================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 500;
+  padding: 16px clamp(20px, 6vw, 70px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(11, 11, 15, 0.6);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.navbar h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(20px, 3vw, 26px);
+  color: white;
+}
+
+.navbar a {
+  color: #e5e7eb;
+  text-decoration: none;
+  margin-left: 24px;
+  font-weight: 500;
+}
+
+/* =======================
+   PANEL (RESPONSIVE)
+======================= */
+.panel {
+  width: 100%;
+  max-width: 1000px;
+  padding: clamp(30px, 8vw, 100px);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  transform-style: preserve-3d;
+}
+
+/* =======================
+   HOME
+======================= */
+.home h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 6vw, 56px);
+  margin-bottom: 20px;
+  color: white;
+}
+
+.home p {
+  font-size: clamp(14px, 2.5vw, 18px);
+  color: #e5e7eb;
+  max-width: 600px;
+  margin: auto;
+}
+
+/* =======================
+   LOGIN
+======================= */
+.login h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 5vw, 42px);
+  margin-bottom: 20px;
+  color: white;
+}
+
+.login input {
+  width: 100%;
+  padding: 14px;
+  margin: 12px 0;
+  border-radius: 12px;
+  border: none;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  font-size: 14px;
+}
+
+.login button {
+  margin-top: 18px;
+  padding: 14px;
+  width: 100%;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+  color: white;
+  font-size: 15px;
+}
+
+/* =======================
+   FOUNDERS
+======================= */
+.founders h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 5vw, 46px);
+  margin-bottom: 40px;
+  color: white;
+}
+
+.founders-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+}
+
+.founder {
+  text-align: center;
+  color: white;
+}
+
+.founder img {
+  width: clamp(120px, 20vw, 160px);
+  height: clamp(120px, 20vw, 160px);
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 14px;
+  border: 3px solid rgba(255,255,255,0.3);
+}
+
+/* =======================
+   3D SCROLL EFFECT
+======================= */
+.hidden {
+  opacity: 0;
+  transform: translateZ(-300px) rotateX(18deg);
+}
+
+.show {
+  opacity: 1;
+  transform: translateZ(0) rotateX(0);
+  transition: all 1s ease;
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+  <h1>CreativeTemplates</h1>
+  <nav>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<!-- HOME -->
+<section class="home">
+  <div class="panel hidden">
+    <h2>Premium Web Templates</h2>
+    <a href="templates.html" style="text-decoration:none;">
+      <p>
+        Modern, animated, creative templates designed for professionals and startups.
+      </p>
+    </a>
+  </div>
+</section>
+
+<!-- LOGIN -->
+<section class="login">
+  <div class="panel hidden">
+    <h1>Login</h1>
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Password">
+    <button>Enter</button>
+  </div>
+</section>
+
+<!-- FOUNDERS -->
+<section class="founders">
+  <div class="panel hidden">
+    <h2>Meet the Founders</h2>
+
+    <div class="founders-grid">
+      <div class="founder">
+        <img src="images/founder1.jpg">
+        <h4>Your Name</h4>
+        <span>Founder</span>
+      </div>
+
+      <div class="founder">
+        <img src="images/founder2.jpg">
+        <h4>Co-Founder</h4>
+        <span>Designer</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+const panels = document.querySelectorAll('.panel');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+}, { threshold: 0.4 });
+
+panels.forEach(panel => observer.observe(panel));
+</script>
+
+</body>
+</html>
