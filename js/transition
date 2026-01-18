@@ -1,0 +1,18 @@
+document.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", e => {
+    const href = link.getAttribute("href");
+
+    if (!href || href.startsWith("#") || href.startsWith("http")) return;
+
+    e.preventDefault();
+
+    const page = document.querySelector(".page");
+    const isBack = link.classList.contains("back");
+
+    page.classList.add(isBack ? "exit-right" : "exit-left");
+
+    setTimeout(() => {
+      window.location.href = href;
+    }, 650);
+  });
+});
